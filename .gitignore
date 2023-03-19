@@ -1,6 +1,6 @@
 
 # ignore build folder
-*build
+build
 
 #ignore system folder
 *.DS_Store
@@ -12,6 +12,3 @@
 .vscode/
 *.sw*
 *.txt
-build
-build/*
-!build/build.xml

@@ -1,5 +1,0 @@
-/Users/naname/Documents/GAMES101/Assignment3/Code/build/CMakeFiles/Rasterizer.dir
-/Users/naname/Documents/GAMES101/Assignment3/Code/build/CMakeFiles/TriangleTest.dir
-/Users/naname/Documents/GAMES101/Assignment3/Code/build/CMakeFiles/test.dir
-/Users/naname/Documents/GAMES101/Assignment3/Code/build/CMakeFiles/edit_cache.dir
-/Users/naname/Documents/GAMES101/Assignment3/Code/build/CMakeFiles/rebuild_cache.dir
