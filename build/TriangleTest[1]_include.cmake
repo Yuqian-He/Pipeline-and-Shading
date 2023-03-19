@@ -1,0 +1,5 @@
+if(EXISTS "/Users/naname/Documents/GAMES101/Assignment3/Code/build/TriangleTest[1]_tests.cmake")
+  include("/Users/naname/Documents/GAMES101/Assignment3/Code/build/TriangleTest[1]_tests.cmake")
+else()
+  add_test(TriangleTest_NOT_BUILT TriangleTest_NOT_BUILT)
+endif()
