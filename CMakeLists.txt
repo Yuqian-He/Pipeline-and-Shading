@@ -24,17 +24,27 @@ target_sources(Rasterizer PRIVATE include/global.hpp
 target_link_libraries(Rasterizer ${OpenCV_LIBRARIES})
 #target_compile_options(Rasterizer PUBLIC -Wall -Wextra -pedantic)
 
-#add testing stuff
 find_package(GTest CONFIG REQUIRED)
 include(GoogleTest)
 enable_testing()
 include_directories(include)
+
+#add testing TriangleTest
 add_executable(TriangleTest)
 target_sources(TriangleTest PRIVATE test/TriangleTest.cpp
                 ${PROJECT_SOURCE_DIR}/src/Triangle.cpp
                 ${PROJECT_SOURCE_DIR}/include/Triangle.hpp
  
 )
-
 target_link_libraries(TriangleTest PRIVATE GTest::gtest GTest::gtest_main)
 gtest_discover_tests(TriangleTest)
+
+
+#add testing RasterizerTest
+add_executable(RasterizerTest)
+target_sources(RasterizerTest PRIVATE test/RasterizerTest.cpp
+                        ${PROJECT_SOURCE_DIR}/include/rasterizer.hpp
+ 
+)
+target_link_libraries(RasterizerTest PRIVATE GTest::gtest GTest::gtest_main)
+gtest_discover_tests(RasterizerTest)
