@@ -44,6 +44,15 @@ gtest_discover_tests(TriangleTest)
 add_executable(RasterizerTest)
 target_sources(RasterizerTest PRIVATE test/RasterizerTest.cpp
                         ${PROJECT_SOURCE_DIR}/include/rasterizer.hpp
+                        ${PROJECT_SOURCE_DIR}/include/global.hpp
+                        ${PROJECT_SOURCE_DIR}/include/Shader.hpp
+                        ${PROJECT_SOURCE_DIR}/include/Triangle.hpp
+                        ${PROJECT_SOURCE_DIR}/include/Texture.hpp
+                        ${PROJECT_SOURCE_DIR}/src/rasterizer.cpp
+                        ${PROJECT_SOURCE_DIR}/src/Texture.cpp
+                        ${PROJECT_SOURCE_DIR}/src/Triangle.cpp
+                        ${PROJECT_SOURCE_DIR}/include/OBJ_Loader.h
+ 
  
 )
 target_link_libraries(RasterizerTest PRIVATE GTest::gtest GTest::gtest_main)
