@@ -53,32 +53,37 @@ Eigen::Matrix4f get_projection_matrix(float eye_fov, float aspect_ratio, float z
     Eigen::Matrix4f projection = Eigen::Matrix4f::Identity();
     Matrix4f pro(4, 4);
     //透视变换
-    float n = -zNear;
-    float f = -zFar;
+    float n = zNear;
+    float f = zFar;
     pro << n, 0, 0, 0,
         0, n, 0, 0,
         0, 0, n + f, -n * f,
         0, 0, 1, 0;
     Matrix4f orth(4, 4);
  
-    float t = tanf(eye_fov / 2) * zNear * 2;
-    float width = aspect_ratio * t;
+    float halfAngle = eye_fov * MY_PI / 180.0f;
+
+    auto top = -zNear * tan(halfAngle / 2);
+    auto right = top * aspect_ratio;
+    auto left = -right;
+    auto bottom = -top;
  
     //平移矩阵
     Matrix4f move(4, 4);
-    move << 1, 0, 0, 0,
-        0, 1, 0, 0,
-        0, 0, 1, -(f + n) / 2,
-        0, 0, 0, 1;
+    move << 1,0,0,-(right+left)/2,
+            0,1,0,-(top + bottom)/2,
+            0,0,1,-(zFar+zNear)/2,
+            0,0,0,1;
     //缩放矩阵
-    orth <<
-        2 / width, 0, 0, 0,
-        0, 2 / t, 0, 0,
-        0, 0, 2 / (zFar - zNear), 0,
-        0, 0, 0, 1;
+    orth <<2/(right-left),0,0,0,
+            0,2/(top-bottom),0,0,
+            0,0,2/(zNear-zFar),0,
+            0,0,0,1;
  
     //注意乘积的顺序
     projection = orth * move * pro;
+
+    return projection;
 
 }
 

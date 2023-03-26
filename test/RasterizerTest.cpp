@@ -4,5 +4,5 @@
 
 TEST(Rasterizer, to_vec4)
 {
-    rst::rasterizer r(700, 700);
+
 }

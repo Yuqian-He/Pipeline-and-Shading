@@ -105,6 +105,24 @@ $$
 ## Blinn-Phong Reflection Model
 
 
-# Result
+# Building and Result
+```c++
+# Setup environment 
 
-# Building
+# Download repository
+$ git clone git@github.com:Yuqian-He/Pipeline-and-Shading.git
+$ cd Pipeline-and-Shading
+
+# Configure and build project
+$ mkdir build
+$ cd build
+$ cmake .. 
+$ make
+
+```
+
+## normal shader
+```c++
+./Rasterizer output.png normal
+```
+![](result/normal.png)
