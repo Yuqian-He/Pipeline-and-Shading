@@ -50,6 +50,35 @@ Eigen::Matrix4f get_model_matrix(float angle)
 Eigen::Matrix4f get_projection_matrix(float eye_fov, float aspect_ratio, float zNear, float zFar)
 {
     // TODO: Use the same projection matrix from the previous assignments
+    Eigen::Matrix4f projection = Eigen::Matrix4f::Identity();
+    Matrix4f pro(4, 4);
+    //透视变换
+    float n = -zNear;
+    float f = -zFar;
+    pro << n, 0, 0, 0,
+        0, n, 0, 0,
+        0, 0, n + f, -n * f,
+        0, 0, 1, 0;
+    Matrix4f orth(4, 4);
+ 
+    float t = tanf(eye_fov / 2) * zNear * 2;
+    float width = aspect_ratio * t;
+ 
+    //平移矩阵
+    Matrix4f move(4, 4);
+    move << 1, 0, 0, 0,
+        0, 1, 0, 0,
+        0, 0, 1, -(f + n) / 2,
+        0, 0, 0, 1;
+    //缩放矩阵
+    orth <<
+        2 / width, 0, 0, 0,
+        0, 2 / t, 0, 0,
+        0, 0, 2 / (zFar - zNear), 0,
+        0, 0, 0, 1;
+ 
+    //注意乘积的顺序
+    projection = orth * move * pro;
 
 }
 
