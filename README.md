@@ -17,7 +17,7 @@ This project implements the complete shading pipeline, which includes vertex pro
 # Method
 
 ## rasterize_triangle
-Building upon my previous project, this part not only interpolates depth values, but also takes into account the texture associated with each pixel. To enable this functionality, a new class called "Texture" was introduced to store the input image, and texture mapping techniques (as referenced from [LEI XU](http://games-cn.org/forums/topic/%e4%bd%9c%e4%b8%9a3%e6%9b%b4%e6%ad%a3%e5%85%ac%e5%91%8a/)'s code) were utilized to accurately project the color information onto the model.
+Building upon my previous project, this part not only interpolates depth values, but also takes into account the texture associated with each pixel. To enable this functionality, a new class called "Texture" was introduced to store the input image, and a new Triangle attribute call "texCoord" to map the texture uv coordinate with geometry vertices information(as referenced from [LEI XU](http://games-cn.org/forums/topic/%e4%bd%9c%e4%b8%9a3%e6%9b%b4%e6%ad%a3%e5%85%ac%e5%91%8a/)'s code). 
 ### Algorithm Outline
 ```c++
 // Find out the bounding box of current triangle
@@ -42,6 +42,68 @@ for each boundingBox_pixel i do
             setPixelColor(position,pixel_color)
 end
 ```
+### Barycentric Coordinates
+In a triangle a point(x,y):
+
+$$
+(x,y)=\alpha \times A + \beta \times B + \gamma \times C
+$$
+
+$$
+\alpha + \beta + \gamma = 1
+$$
+
+result:
+
+$$
+\alpha = \frac{-(x-x_{B})(y_{C}-y_{B})+(y-y_{B})(x_{C}-x_{B})}{-(x_{A}-x_{B})(y_{C}-y_{B})+(y_{A}-y_{B})(x_{C}-x_{B})}
+$$
+
+$$
+\beta = \frac{-(x-x_{C})(y_{A}-y_{C})+(y-y_{C})(x_{A}-x_{C})}{-(x_{B}-x_{C})(y_{A}-y_{C})+(y_{B}-y_{C})(x_{A}-x_{C})}
+$$
+
+$$
+\gamma = 1- \alpha - \beta
+$$
+
+> barycentric coordinate are not invariant under projection
+
+## perspective projection
+This part is the same as my [pervious work](https://github.com/Yuqian-He/model-view-projection), here are the formula
+
+$$
+M_{persp} = M_{ortho}M_{persp->ortho}
+$$
+
+$$
+M_{persp->ortho} = 
+   \begin{bmatrix}
+   n&0&0&0\\
+   0&n&0&0\\
+   0&0&n+f&-nf\\
+   0&0&1&0\\
+   \end{bmatrix}
+$$
+
+$$
+ M_{ortho} = 
+  \begin{bmatrix}
+  \frac{2}{r-1}&0&0&0\\
+  0&\frac{2}{t-b}&0&0\\
+  0&0&\frac{2}{n-f}&0\\
+  0&0&0&1\\
+  \end{bmatrix} 
+  \begin{bmatrix}
+  1&0&0&-\frac{r+1}{2}\\
+  0&1&0&-\frac{t+b}{2}\\
+  0&0&1&-\frac{n+f}{2}\\
+  0&0&0&1\\
+  \end{bmatrix} 
+$$
+
+## Blinn-Phong Reflection Model
+
 
 # Result
 

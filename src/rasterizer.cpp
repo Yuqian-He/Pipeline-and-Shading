@@ -306,7 +306,7 @@ void rst::rasterizer::rasterize_triangle(const Triangle& t, const std::array<Eig
                     fragment_shader_payload shader(interpolated_color, interpolated_normal, interpolated_texoords, texture ? &*texture : nullptr);
                     //Instead of passing the triangle's color directly to the frame buffer, pass the color to the shaders first to get the final color;
                     shader.view_pos = interpolated_shadingcoords;
-                    auto pixel_color = fragment_shader(shader); //I dont understand where is the defination of fragment shader???
+                    auto pixel_color = fragment_shader(shader); //I dont understand where is the defination of fragment shader??? texoords
 
                     //set pixel color
                     set_pixel(Eigen::Vector2i(i,j),pixel_color);
