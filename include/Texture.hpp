@@ -30,5 +30,31 @@ public:
         return Eigen::Vector3f(color[0], color[1], color[2]);
     }
 
+    Eigen::Vector3f getColorBilinear(float u, float v)
+    {
+        //identify four pixels
+        auto u1_img = int(u * width);
+        auto v1_img = int(v * height);
+        auto u2_img = u1_img+1;
+        auto v2_img = v1_img;
+        auto u3_img = u1_img;
+        auto v3_img = v1_img+1;
+        auto u4_img = u1_img+1;
+        auto v4_img = v1_img+1;
+
+        //four pixel color
+        auto color1=getColor(u1_img/width,v1_img/height);
+        auto color2=getColor(u2_img/width,v2_img/height);
+        auto color3=getColor(u3_img/width,v3_img/height);
+        auto color4=getColor(u4_img/width,v4_img/height);
+
+        //Bilinear
+        auto color_1=color1+(color2-color1)*(u*width-u1_img);
+        auto color_2=color3+(color4-color3)*(u*width-u1_img);
+        auto result=color_1+(color_2-color_1)*(v*height-v4_img);
+
+        return result;
+    }
+
 };
 #endif //RASTERIZER_TEXTURE_H

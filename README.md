@@ -103,7 +103,34 @@ $$
 $$
 
 ## Blinn-Phong Reflection Model
+### Ambient term 环境光
+Ambient refers to the amount of light present in a scene that is not directly coming from a light source, which is typically the result of light scattering and bouncing around the environment, and it is generally considered to be a low-level, omnidirectional type of lighting that provides a base level of illumination across the entire scene. In Blinn-Phong Reflection model, ambient term is approximate, not actually calculate real environment lighting reflection. here is the formula:
 
+$$
+L_{a}=k_{a}I_{a}
+$$
+
+$L_{a}$: Reflected ambient light
+$k_{a}$: Ambient coefficient
+$I_{a}$: Light Intensity
+
+### Diffuse term 漫反射
+Diffuse refers to the way in which light interacts with a surface that is not perfectly reflective or transparent. When light hits a diffuse surface, it scatters in all directions, rather than reflecting off the surface in a single direction as it would with a mirror-like surface. Here is the formula:
+
+$$
+L_{d}=k_{d}(\frac{I}{r^{2}})max(0,\dot{n}{l})
+$$
+
+$L_{d}$: Diffusely reflected light
+$k_{d}$: Diffuse coefficient (color)
+$\frac{I}{r^{2}}$: Energy arrived at shading point
+$r$: Distance between light point and shading point
+$max(0,\dot{n}{l})$: Energy received by shading point
+$n$: Normal of the shading point surface
+$l$: Light direction
+
+### Specular term (Blinn-Phong) 高光
+Specular represents the reflection of light off a smooth, shiny surface, such as a mirror or a polished metal object.
 
 # Building and Result
 ```c++
