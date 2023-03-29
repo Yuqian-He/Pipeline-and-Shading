@@ -111,7 +111,9 @@ L_{a}=k_{a}I_{a}
 $$
 
 $L_{a}$: Reflected ambient light
+
 $k_{a}$: Ambient coefficient
+
 $I_{a}$: Light Intensity
 
 ### Diffuse term 漫反射
@@ -122,11 +124,17 @@ L_{d}=k_{d}(\frac{I}{r^{2}})max(0,\dot{n}{l})
 $$
 
 $L_{d}$: Diffusely reflected light
+
 $k_{d}$: Diffuse coefficient (color)
+
 $\frac{I}{r^{2}}$: Energy arrived at shading point
+
 $r$: Distance between light point and shading point
+
 $max(0,\dot{n}{l})$: Energy received by shading point
+
 $n$: Normal of the shading point surface
+
 $l$: Light direction
 
 ### Specular term (Blinn-Phong) 高光
