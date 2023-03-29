@@ -120,7 +120,7 @@ $I_{a}$: Light Intensity
 Diffuse refers to the way in which light interacts with a surface that is not perfectly reflective or transparent. When light hits a diffuse surface, it scatters in all directions, rather than reflecting off the surface in a single direction as it would with a mirror-like surface. Here is the formula:
 
 $$
-L_{d}=k_{d}(\frac{I}{r^{2}})max(0,\dot{n}{l})
+L_{d}=k_{d}(\frac{I}{r^{2}})max(0,\dotc{n}{l})
 $$
 
 $L_{d}$: Diffusely reflected light
