@@ -131,7 +131,7 @@ $\frac{I}{r^{2}}$: Energy arrived at shading point
 
 $r$: Distance between light point and shading point
 
-$max(0,\dot{n}{l})$: Energy received by shading point
+$max(0,n·l)$: Energy received by shading point
 
 $n$: Normal of the shading point surface
 
