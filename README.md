@@ -110,10 +110,8 @@ $$
 L_{a}=k_{a}I_{a}
 $$
 
-$L_{a}$: Reflected ambient light
-
-$k_{a}$: Ambient coefficient
-
+$L_{a}$: Reflected ambient light \
+$k_{a}$: Ambient coefficient \
 $I_{a}$: Light Intensity
 
 ### Diffuse term 漫反射
@@ -123,22 +121,38 @@ $$
 L_{d}=k_{d}(\frac{I}{r^{2}})max(0, n·l)
 $$
 
-$L_{d}$: Diffusely reflected light
-
-$k_{d}$: Diffuse coefficient (color)
-
-$\frac{I}{r^{2}}$: Energy arrived at shading point
-
-$r$: Distance between light point and shading point
-
-$max(0,n·l)$: Energy received by shading point
-
-$n$: Normal of the shading point surface
-
+$L_{d}$: Diffusely reflected light \
+$k_{d}$: Diffuse coefficient (color) \
+$\frac{I}{r^{2}}$: Energy arrived at shading point \
+$r$: Distance between light point and shading point \
+$\frac{I}{r^{2}}*max(0,n·l)$: Energy received by shading point \
+$n$: Normal of the shading point surface \
 $l$: Light direction
 
 ### Specular term (Blinn-Phong) 高光
-Specular represents the reflection of light off a smooth, shiny surface, such as a mirror or a polished metal object.
+Specular represents the reflection of light off a smooth, shiny surface, such as a mirror or a polished metal object. Here is the formula:
+
+> view direction close to mirror direction -> half vector near normal
+
+$$
+    h=bisector(v,l)=\frac{v+l}{||v+l||}
+$$
+
+> Bright near mirror reflection direction
+
+$$
+L_{s}=k_{s}(\frac{I}{r^{2}})max(0, cos\alpha)^{p}=k_{s}(\frac{I}{r^{2}})max(0, n·h)^{p}
+$$
+
+$L_{s}$: Specularly reflected light \
+$k_{d}$: Specular coefficient \
+$\frac{I}{r^{2}}$: Energy arrived at shading point \
+$r$: Distance between light point and shading point \
+$\frac{I}{r^{2}}*max(0,n·h)$: Energy received by shading point \
+$n$: Normal of the shading point surface \
+$l$: Light direction \
+$v$: View direction \
+$h$: half vector 
 
 # Building and Result
 ```c++
