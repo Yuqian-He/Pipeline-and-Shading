@@ -154,6 +154,8 @@ $l$: Light direction \
 $v$: View direction \
 $h$: half vector 
 
+## Real-time Rendering Pipeline
+
 # Building and Result
 ```c++
 # Setup environment 
@@ -172,6 +174,33 @@ $ make
 
 ## normal shader
 ```c++
-./Rasterizer output.png normal
+./Rasterizer normal.png normal
 ```
 ![](result/normal.png)
+
+## blinn-phong shader
+```c++
+./Rasterizer blinn_phong.png phong
+```
+![](result/blinn-phong.png)
+
+## without blinn-phong shader
+![](result/without-blinn-phong.png)
+
+## texture shader
+```c++
+./Rasterizer texture_shader.png texture
+```
+![](result/texture%20shader.png)
+
+## bump fragment shader
+```c++
+./Rasterizer bump.png bump
+```
+![](result/bump%20fragment%20shader.png)
+
+## displacement shader
+```c++
+./Rasterizer displacement.png displacement
+```
+![](result/displacement%20fragment%20shader.png)
