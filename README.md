@@ -154,7 +154,6 @@ $l$: Light direction \
 $v$: View direction \
 $h$: half vector 
 
-## Real-time Rendering Pipeline
 
 # Building and Result
 ```c++

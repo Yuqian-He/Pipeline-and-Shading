@@ -403,6 +403,7 @@ int main(int argc, const char** argv)
     r.set_texture(Texture(obj_path + texture_path));
 
     std::function<Eigen::Vector3f(fragment_shader_payload)> active_shader = phong_fragment_shader;
+    //定义一个返回类型是Eigen::Vector3f，传入参数类型是fragment_shader_payload的函数变量是active_shader,它等于函数phong_fragment_shader
 
     if (argc >= 2)
     {
@@ -446,6 +447,7 @@ int main(int argc, const char** argv)
     int key = 0;
     int frame_count = 0;
 
+//draw
     if (command_line)
     {
         r.clear(rst::Buffers::Color | rst::Buffers::Depth);
