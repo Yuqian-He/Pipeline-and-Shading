@@ -24,6 +24,9 @@ public:
 
     Eigen::Vector3f getColor(float u, float v)
     {
+        u = std::fmin(1, std::fmax(u, 0));
+        v = std::fmin(1, std::fmax(v, 0));
+
         auto u_img = u * width;
         auto v_img = (1 - v) * height;
         auto color = image_data.at<cv::Vec3b>(v_img, u_img);
@@ -32,6 +35,9 @@ public:
 
     Eigen::Vector3f getColorBilinear(float u, float v)
     {
+        u = std::fmin(1, std::fmax(u, 0));
+        v = std::fmin(1, std::fmax(v, 0));
+
         //identify four pixels
         auto u1_img = int(u * width);
         auto v1_img = int(v * height);
