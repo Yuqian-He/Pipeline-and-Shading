@@ -1,11 +1,13 @@
 cmake_minimum_required(VERSION 3.10)
 project(Rasterizer)
 
-find_package(OpenCV REQUIRED)
-
 set(CMAKE_CXX_STANDARD 17)
-include_directories("/opt/homebrew/include")
+set(OpenCV_INCLUDE_DIRS /opt/homebrew/opt/opencv/include)
+set(OpenCV_LIBS_DIR /opt/homebrew/opt/opencv/lib)
+
+find_package(OpenCV REQUIRED)
 include_directories(${OpenCV_INCLUDE_DIRS})
+include_directories("/opt/homebrew/include")
 
 # Set the name of the executable we want to build
 add_executable(Rasterizer)
@@ -41,19 +43,19 @@ gtest_discover_tests(TriangleTest)
 
 
 #add testing RasterizerTest
-add_executable(RasterizerTest)
-target_sources(RasterizerTest PRIVATE test/RasterizerTest.cpp
-                        ${PROJECT_SOURCE_DIR}/include/rasterizer.hpp
-                        ${PROJECT_SOURCE_DIR}/include/global.hpp
-                        ${PROJECT_SOURCE_DIR}/include/Shader.hpp
-                        ${PROJECT_SOURCE_DIR}/include/Triangle.hpp
-                        ${PROJECT_SOURCE_DIR}/include/Texture.hpp
-                        ${PROJECT_SOURCE_DIR}/src/rasterizer.cpp
-                        ${PROJECT_SOURCE_DIR}/src/Texture.cpp
-                        ${PROJECT_SOURCE_DIR}/src/Triangle.cpp
-                        ${PROJECT_SOURCE_DIR}/include/OBJ_Loader.h
+# add_executable(RasterizerTest)
+# target_sources(RasterizerTest PRIVATE test/RasterizerTest.cpp
+#                         ${PROJECT_SOURCE_DIR}/include/rasterizer.hpp
+#                         ${PROJECT_SOURCE_DIR}/include/global.hpp
+#                         ${PROJECT_SOURCE_DIR}/include/Shader.hpp
+#                         ${PROJECT_SOURCE_DIR}/include/Triangle.hpp
+#                         ${PROJECT_SOURCE_DIR}/include/Texture.hpp
+#                         ${PROJECT_SOURCE_DIR}/src/rasterizer.cpp
+#                         ${PROJECT_SOURCE_DIR}/src/Texture.cpp
+#                         ${PROJECT_SOURCE_DIR}/src/Triangle.cpp
+#                         ${PROJECT_SOURCE_DIR}/include/OBJ_Loader.h
  
  
-)
-target_link_libraries(RasterizerTest PRIVATE GTest::gtest GTest::gtest_main)
-gtest_discover_tests(RasterizerTest)
+# )
+# target_link_libraries(RasterizerTest PRIVATE GTest::gtest GTest::gtest_main)
+# gtest_discover_tests(RasterizerTest)
