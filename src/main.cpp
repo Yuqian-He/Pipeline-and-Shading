@@ -127,13 +127,13 @@ Eigen::Vector3f texture_fragment_shader(const fragment_shader_payload& payload)
 
     Eigen::Vector3f ka = Eigen::Vector3f(0.005, 0.005, 0.005);
     Eigen::Vector3f kd = texture_color / 255.f;
-    Eigen::Vector3f ks = Eigen::Vector3f(0.7937, 0.7937, 0.7937);
+    Eigen::Vector3f ks = Eigen::Vector3f(1.7937, 1.7937, 1.7937);
 
-    auto l1 = light{{20, 20, 20}, {500, 500, 500}};
-    auto l2 = light{{-20, 20, 0}, {500, 500, 500}};
+    auto l1 = light{{20, -30, -20}, {700, 700, 700}};
+    auto l2 = light{{-20, -20, 0}, {700, 700, 700}};
 
     std::vector<light> lights = {l1, l2};
-    Eigen::Vector3f amb_light_intensity{10, 10, 10};
+    Eigen::Vector3f amb_light_intensity{5, 5, 5};
     Eigen::Vector3f eye_pos{0, 0, 10};
 
     float p = 150;
@@ -167,7 +167,8 @@ Eigen::Vector3f texture_fragment_shader(const fragment_shader_payload& payload)
 
     }
 
-    return result_color * 255.f;
+     return result_color * 255.f;
+    //return color;
 }
 
 Eigen::Vector3f phong_fragment_shader(const fragment_shader_payload& payload)
@@ -381,7 +382,7 @@ int main(int argc, const char** argv)
     std::string obj_path = "../models/test/";
 
     // Load .obj File
-    bool loadout = Loader.LoadFile("../models/test/test.obj");
+    bool loadout = Loader.LoadFile("../models/test/food.obj");
     for(auto mesh:Loader.LoadedMeshes)
     {
         for(int i=0;i<mesh.Vertices.size();i+=3)
@@ -399,7 +400,7 @@ int main(int argc, const char** argv)
 
     rst::rasterizer r(700, 700);
 
-    auto texture_path = "normal.jpg";
+    auto texture_path = "normal food.jpg";
     r.set_texture(Texture(obj_path + texture_path));
 
     std::function<Eigen::Vector3f(fragment_shader_payload)> active_shader = phong_fragment_shader;
@@ -414,7 +415,7 @@ int main(int argc, const char** argv)
         {
             std::cout << "Rasterizing using the texture shader\n";
             active_shader = texture_fragment_shader;
-            texture_path = "texture.jpg";
+            texture_path = "texture food.jpg";
             r.set_texture(Texture(obj_path + texture_path));
         }
         else if (argc == 3 && std::string(argv[2]) == "normal")
