@@ -172,19 +172,13 @@ $ make
 ```
 
 ## normal shader
-![](result/normal.png)
+![](result/normal.gif)
 
 ## texture shader
 ![](result/texture.gif)
 
-## bump fragment shader
-```c++
-./Rasterizer bump.png bump
-```
-![](result/bump%20fragment%20shader.png)
+## texture without blinn-phong
+![](result/texture%20without%20blinn-phong.gif)
 
-## displacement shader
-```c++
-./Rasterizer displacement.png displacement
-```
-![](result/displacement%20fragment%20shader.png)
+## blinn-phong without texture
+![](result/blinn-phong%20without%20texture.gif)
