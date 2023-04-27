@@ -172,25 +172,10 @@ $ make
 ```
 
 ## normal shader
-```c++
-./Rasterizer normal.png normal
-```
 ![](result/normal.png)
 
-## blinn-phong shader
-```c++
-./Rasterizer blinn_phong.png phong
-```
-![](result/blinn-phong.png)
-
-## without blinn-phong shader
-![](result/without-blinn-phong.png)
-
 ## texture shader
-```c++
-./Rasterizer texture_shader.png texture
-```
-![](result/texture%20shader.png)
+![](result/texture.gif)
 
 ## bump fragment shader
 ```c++
