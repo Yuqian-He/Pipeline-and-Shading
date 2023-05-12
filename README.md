@@ -1,4 +1,4 @@
-# Overall 
+# Overall ([report](https://drive.google.com/file/d/13cZ2wYyCwdQYEYyKVRqzwFRFZnK3sZby/view?usp=share_link) | [video](https://youtu.be/GORiImh4eys))
 This project implements the complete shading pipeline, which includes vertex processing, triangle processing, rasterization, fragment processing, and framebuffer operations. In my previous projects, [model view projection](https://github.com/Yuqian-He/model-view-projection) and [rasterizer triangle](https://github.com/Yuqian-He/rasterize-triangle), I implemented various stages of this pipeline, including vertex processing, triangle processing, and rasterization. However, this project builds upon my previous work by incorporating more complex models and support for texture mapping, achieved through the use of vertex and fragment shaders.
 
 # Development environment
